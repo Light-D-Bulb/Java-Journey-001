@@ -1,0 +1,28 @@
+import java.util.Scanner;
+public class FirstPalindromeString {
+    public static void main(String[] args) {
+        // Get the input string from the user.
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String inputString = scanner.nextLine();
+        // Find the lexicographically first palindrome using the input string.
+        String lexicographicallyFirstPalindrome = findLexicographicFirstPalindrome(inputString);
+        // Print the lexicographically first palindrome.
+        System.out.println("Mitesh Mandal");
+        System.out.println("21BCE10428");
+        System.out.println("The lexicographically first palindrome is: " + lexicographicallyFirstPalindrome);
+    }
+    private static String findLexicographicFirstPalindrome(String inputString) {
+        // Create a new string that is the same as the input string, but with the characters reversed.
+        String reversedString = new StringBuilder(inputString).reverse().toString();
+        // Compare the input string and the reversed string character by character.
+        for (int i = 0; i < inputString.length(); i++) {
+            if (inputString.charAt(i) != reversedString.charAt(i)) {
+                // If the characters are not the same, then the lexicographically first palindrome is the input string with the first non-matching character removed.
+                return inputString.substring(0, i) + inputString.substring(i + 1);
+            }
+        }
+        // If the characters are the same, then the lexicographically first palindrome is the input string.
+        return inputString;
+    }
+}
